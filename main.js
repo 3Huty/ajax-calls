@@ -6,24 +6,21 @@ btn.addEventListener("click", function() {
 var ourRequest = new XMLHttpRequest();
 ourRequest.open('GET', 'https://learnwebcode.github.io/json-example/animals-'+ pageCouner + '.json');
 ourRequest.onload = function() {
-    if(ourRequest.status >= 200 && ourRequest.status < 400) {
+    if(ourRequest.status = 200) {
         var ourData = JSON.parse(ourRequest.responseText);
-renderHTML(ourData);
+        renderHTML(ourData);
     } else {
         console.log("We connected to the server, but it returned an error.");
     }
-
 };
-    
-ourRequest.onerror = function() {
+    ourRequest.onerror = function() {
     console.log("Connection error");
-};
-    
-ourRequest.send(); 
-pageCouner++;
-if (pageCouner >3){
+    };
+    ourRequest.send(); 
+    pageCouner++;
+    if (pageCouner >3){
     btn.classList.add("hide-me");
-}
+    }
 })
 
 function renderHTML(data) {
@@ -47,8 +44,7 @@ function renderHTML(data) {
                 htmlString += " and " + data[i].foods.dislikes[ii];
             }
         }
-        
-        htmlString += '.</p>';
+            htmlString += '.</p>';
     }
     animalContainer.insertAdjacentHTML('beforeend', htmlString);
 }
